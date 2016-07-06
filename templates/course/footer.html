@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<div class="form-group" id="">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="recipient-name" class="control-label">courseID:</label>
+            <input type="text" class="form-control" id="courseID">
+        </div>
+        <div class="form-group">
+            <label for="message-text" class="control-label">書籍名稱:</label>
+            <textarea class="form-control" id="book"></textarea>
+        </div>
+    </form>
+    <button type="button" class="btn btn-danger btn-block" id="book_of_course">
+        <span class="fa fa-cloud-upload fa-1x fa-fw"></span>提交書籍名稱
+    </button>
+</div>
+<div class="footer">
+    <!-- FB讚和分享按鈕 -->
+    <div id="like">
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <div class="fb-like" data-href="https://www.facebook.com/CoursePickingHelper/" data-width="280px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+    </div>
+
+    <div id="contact">
+      <a href="https://github.com/david30907d/CoursePickingHelper"><span class="github_sign fa fa-github-square fa-1x"></span></a>&nbsp;
+      <a href="https://www.facebook.com/CoursePickingHelper/"><span class="github_sign fa fa-facebook-official fa-1x"></span></a>&nbsp;
+        <a href="http://new.nchusg.org/"><span class="github_sign"><img id="SGsign" src="{% static 'coursepickinghelper/images/會徽-01.jpg' %}"><i>中興大學學生會</i></span></a>&nbsp;
+        <a href="https://zh-tw.facebook.com/it.nchu"><span class="github_sign"><img id="SGsign" src="{% static 'coursepickinghelper/images/nchuit.png' %}"><i>中興大學資訊社</i></span></a>
+    </div>
+</div>
