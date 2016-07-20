@@ -1,8 +1,8 @@
 {% extends "course/base.html"  %}
 {% load staticfiles %}
 {% block eachStyle %}
-    <link href="{% static 'coursepickinghelper/css/course_zh_TW.css' %}" rel="stylesheet">
-    <link rel="shortcut icon" href="{% static 'coursepickinghelper/images/goose.jpg' %}" />
+    <link href="{% static 'course/css/course_zh_TW.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'course/images/goose.jpg' %}" />
 {% endblock eachStyle%}
 {% block content %}
         <!--選取系級的表單結束-->
@@ -396,7 +396,7 @@
                             <div class="container-fluid">
                                 <div class="col-xs-4" id="btn-tools">
                                     <button type="button" style="color:#fff;" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#focus">
-                                        <img src="{% static 'coursepickinghelper/images/icon/appreciation.svg' %}" title="Hand Cursor" width="35" style="margin: 0px auto 0px auto;display: block;">
+                                        <img src="{% static 'course/images/icon/appreciation.svg' %}" title="Hand Cursor" width="35" style="margin: 0px auto 0px auto;display: block;">
                                             <p class="text-center" style="margin-top: 6px;">系外修課</p>
                                     </button>
                                 </div>
@@ -433,7 +433,7 @@
                                             </div> 
                                             <div class=" booklisticon">
                                                 <a href="/zh-cn/search/?q={{ b.book }}">
-                                                <img src="{% static 'coursepickinghelper/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
+                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
                                                 </a>
                                             </div> 
                                         </label>
@@ -498,7 +498,7 @@
                                             </div> 
                                             <div class=" booklisticon">
                                                 <a href="">
-                                                <img src="{% static 'coursepickinghelper/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
+                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
                                                 </a>
                                             </div> 
                                         </label>

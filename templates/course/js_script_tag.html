@@ -7,24 +7,24 @@
 <link rel="stylesheet" type="text/css" href="http://ad.nchusg.org/ad.css" />  
 <!-- <script src="http://ad.nchusg.org/ad.js"></script> -->
 <!--截圖-->
-<script src="{% static 'coursepickinghelper/js/save/html2canvas.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/save/saveAsPicture.min.js' %}"></script>
+<script src="{% static 'course/js/save/html2canvas.js' %}"></script>
+<script src="{% static 'course/js/save/saveAsPicture.min.js' %}"></script>
 <!--儲存json到本地端-->
 <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
-<!-- <script src="{% static 'coursepickinghelper/js/save/FileSaver.js' %}"></script> -->
-<script src="{% static 'coursepickinghelper/js/save/FileSaver.min.js' %}"></script>
+<!-- <script src="{% static 'course/js/save/FileSaver.js' %}"></script> -->
+<script src="{% static 'course/js/save/FileSaver.min.js' %}"></script>
 <!--功能主函式-->
-<script src="{% static 'coursepickinghelper/js/csrf_post.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/init.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/course_stl.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/backend.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/button_control.js' %}"></script>
-<script src="{% static 'coursepickinghelper/js/bootstrap_site.min.js' %}"></script>
+<script src="{% static 'course/js/csrf_post.js' %}"></script>
+<script src="{% static 'course/js/init.js' %}"></script>
+<script src="{% static 'course/js/course_stl.js' %}"></script>
+<script src="{% static 'course/js/backend.js' %}"></script>
+<script src="{% static 'course/js/button_control.js' %}"></script>
+<script src="{% static 'course/js/bootstrap_site.min.js' %}"></script>
 <script type="text/javascript">	
 $(document).ready(function(){     
     /**一開始的簡易版使用說明**/
     //toastr.success("1. 請從選擇系級開始（未選擇系級，無法使用以下功能）<br />2. 點擊課表中的+字號，旁邊欄位會顯示可排的課程，請善加利用<br />3. 任何課程都可以使用課程查詢來找<br />特別小叮嚀(1)：課程查詢以各位輸入的條件篩選，條件越少，找到符合的課程就越多<br />特別小叮嚀(2)：如果有想要查詢其他系的必選修，也可以使用雙主修功能<br />4. 如果排好課，有需要請截圖來保留自己理想的課表（如果課表太大，可利用縮放功能來縮小視窗以利截圖）", "使用說明", {timeOut: 250000});  
-    $.when(get_json_when_change_degree("/static/coursepickinghelper/json/O.json",null),$.getJSON("/static/coursepickinghelper/json/new_department.json",function(depJson){
+    $.when(get_json_when_change_degree("/static/course/json/O.json",null),$.getJSON("/static/course/json/new_department.json",function(depJson){
         build_department_arr(depJson);
         return_url_and_time_base();
     })).then(function(){
@@ -289,7 +289,7 @@ var new_get_json_when_change_degree = function(path,dept,grade)   {
 var return_url_and_time_base = function(){
     // this function will return a string, url base, which will link to syllabus of that course. and assign it to a global variable.
     $.when(
-        $.getJSON("/static/coursepickinghelper/json/url_base.json", function(json){
+        $.getJSON("/static/course/json/url_base.json", function(json){
             window.url_base=json[0];
             window.lastupdatetime=json[1];
             $('#updatetime').text(window.lastupdatetime);
@@ -308,7 +308,7 @@ var get_from_django = function(){
     window.user['returnarr']['degree'] = "{{ userDegree_from_request | escapejs }}";
     window.user['returnarr']['major'] = "{{ userDept_from_request | escapejs }}";
     window.user['returnarr']['level'] = "{{ userGrade_from_request | escapejs }}";
-    user_degree_json_path = "/static/coursepickinghelper/json/"+"{{ userDegree_from_request | escapejs }}"+".json";//userDegree_from_request is "Degree Character" from user session
+    user_degree_json_path = "/static/course/json/"+"{{ userDegree_from_request | escapejs }}"+".json";//userDegree_from_request is "Degree Character" from user session
     hadSaved_from_request = {{ hadSaved_from_request | yesno:"1,0" }};
     window.user['user_name'] = "{{ email | escapejs }}";
     if(hadSaved_from_request == true){
