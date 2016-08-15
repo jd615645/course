@@ -1,64 +1,12 @@
 $(document).ready(function(){
 	/*******    ↓製作隱藏側欄的功能↓   *******/
-	/***all booklist toggle***/
-	$('#toggle_list').click(function(){
-		//$('#bulletin').slideToggle();
-		$('#bulletin').toggle("slow");//you can choose the special effect you want.
-	})
-	    /***必修***/
-	$("#obligatory-span").click(function(){
-	    // 當點到圖案時，若內容是隱藏時則顯示它；反之則隱藏
-	    $('#obligatory-post').slideToggle();
-	    $('#obligatory-span').find("span").toggle();
-	});                
-	    /***選修***/
-	$("#elective-span").click(function(){
-	    $('#elective-post').slideToggle();
-	    $('#elective-span').find("span").toggle();
-	});
-	    /***通識***/
-	$("#general-span").click(function(){
-	    $('#general-post').slideToggle();
-	    $('#general-span').find("span").toggle();
-	});
-	    /***體育***/
-	$("#school-span").click(function(){
-	    $('#school-post').slideToggle();
-	    $('#school-span').find("span").toggle();
-
-	});
-	    /***搜尋***/
-	$("#search-span").click(function(){
-	    $('#search-post').slideToggle();
-	    $('#search-span').find("span").toggle();
-	});
-	    /***一年級***/
-	$("#freshman-head").click(function(){
-	    $("#freshman-head").find("span").toggle();
-	    $("#freshman").find("button").toggle("slow");
-	});
-
-	$("#sophomore-head").click(function(){
-	    $("#sophomore-head").find("span").toggle();
-	    $("#sophomore").find("button").toggle("slow");
-	});
-	$("#junior-head").click(function(){
-	    $("#junior-head").find("span").toggle();
-	    $("#junior").find("button").toggle("slow");
-	});
-	$("#senior-head").click(function(){
-	    $("#senior-head").find("span").toggle();
-	    $("#senior").find("button").toggle("slow");
-	});
-	$("#fifth-grade-head").click(function(){
-	    $("#fifth-grade-head").find("span").toggle();
-	    $("#fifth-grade").find("button").toggle("slow");
-	});
 	$("#whole-school-head").click(function(){
 	    $("#whole-school-head").find("span").toggle();
 	    $("#whole-school").find("button").toggle("slow");
 	});
-
+	$('.human_title').hide();
+	$('.society_title').hide();
+	$('.nature_title').hide();
 
 	/*******   ↑製作隱藏側欄的功能↑   *******/
 	
@@ -159,24 +107,9 @@ $(document).ready(function(){
 });
 var group_of_reset = function(){
     $(".search_result").empty();//以下是要清掉選修課程、指定時間搜尋等課程
-    // $('#freshman').empty();
-    // $('#sophomore').empty();
-    // $('#senior').empty();
-    // $('#junior').empty();
-    // $('#fifth-grade').empty();
-    // $('#sixth-grade').empty();
-    // $('#seventh-grade').empty();
-    // $('#whole-school').empty();
-    // $('#humanities').empty();
-    // $('#social').empty();
-    // $('#natural').empty();
-    // $('#chinese').empty();
-    // $('#english').empty();
-    // $('#PE-post').empty();
-    // $('#military-post').empty();
-    // $('#teacher-post').empty();
-    // $('#foreign-post').empty();
-    // $('#non-graded-optional-post').empty();
+    $(".human").empty();
+    $(".society").empty();
+    $(".nature").empty();
 }
 /***********清除***********/
 var reset=function(){
@@ -194,7 +127,19 @@ var reset_for_time_request=function(){  //這個function是在你的td的時候�
     group_of_reset();
 }
 /*側邊欄toggle*/
-
-$("#booklistbtn").click(function(){
-	  $('#booklist').toggle("slow");
-});
+var toggle_bulletin=function(){
+	//如果沒有該類別的課程出現 就不顯示那個欄位的標題好節省空間
+	if($('.human').text().trim()!=''){
+		$('.human_title').show("slow");}
+	else{
+		$('.human_title').hide("slow");
+	}
+	if($('.society').text().trim()!=''){$('.society_title').show("slow");}
+	else{
+		$('.society_title').hide("slow");
+	}
+	if($('.nature').text().trim()!=''){$('.nature_title').show("slow");}
+	else{
+		$('.nature_title').hide("slow");
+	}
+}

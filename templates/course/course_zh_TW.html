@@ -45,9 +45,9 @@
 
                         <div class="col-md-12 col-xs-12 col-sm-12 pad_rl_0">
                             <div class="table-responsive" id="time-table">
-                                <table class="table table-striped table-hover table-condensed table-bordered">
+                                <table class="table">
                                     <thead>
-                                        <tr class="info">
+                                        <tr style="background-color:#337ab7">
                                             <th style="width: 2%;">時間</th>
                                             <th style="width: 10%;">一</th>
                                             <th style="width: 10%;">二</th>
@@ -420,28 +420,6 @@
                                 </div>
                             </div>
                             <br>
-                        <!---->
-                        <div class="booklist" id="booklist">
-                            <div class="booklist_border"> 
-                                {% for b in booklist %}
-                                    <div class="ui checkbox col-md-12 pad_rl_0" style="margin-top: 0px;" >
-                                        <input type="checkbox" name="example">
-                                        <label >
-                                            <div class="col-md-9 booklistinfo ">
-                                                <h2>{{ b.name }}</h2>
-                                                <p>{{ b.book }}</p>
-                                            </div> 
-                                            <div class=" booklisticon">
-                                                <a href="/zh-cn/search/?q={{ b.book }}">
-                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
-                                                </a>
-                                            </div> 
-                                        </label>
-                                    </div>
-                                {% endfor %}         
-                            </div>       
-                        </div>
-                    
                      
                             <div class="col-md-12" style="border: 1px solid #ddd;border-radius: 7px;">
                                 <div class="searchbar">
@@ -456,6 +434,15 @@
                                 <div>
                                     <table class="table table-striped table-hover table-condensed ">
                                             <tbody class="search_result">
+                                                <span class="human_title">人文</span>
+                                                <div class="human">
+                                                </div>
+                                                <span class="society_title">社會</span>
+                                                <div class="society">
+                                                </div>
+                                                <span class="nature_title">自然</span>
+                                                <div class="nature">
+                                                </div>
                                             </tbody>    
                                         </table>    
                                 </div>
@@ -476,125 +463,7 @@
                         </div> -->
                 </div>
 
-                <div class="modal " id="booklistpure" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog ">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h3 class="booklist_title modal-title">專屬書單</h3>
-                            
-                        </div>
-
-                        <div class="modal-body">
-                            <div class="booklist" id="booklist">
-                                {% for b in booklist %}
-                                  <div class="input-group boxcenter col-xs-12 col-sm-12">
-                                    <div class="ui checkbox col-xs-12 col-sm-12">
-                                        <input type="checkbox" name="example">
-                                        <label>
-                                            <div class="col-md-9 col-xs-10 booklistinfo ">
-                                                <h2>{{ b.name }}</h2>
-                                                <p>{{ b.book }}</p>
-                                            </div> 
-                                            <div class=" booklisticon">
-                                                <a href="">
-                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
-                                                </a>
-                                            </div> 
-                                        </label>
-                                    </div>   
-                                  </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                           
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="modal " id="arrange_timetablepop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog ">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        </div>
-
-                        <div class="modal-body">
-                
-                            <div class=" arrange_timetable " id="arrange_timetablepop">
-                                <div class="function_bar">
-                                    <table class="table table-striped function_bar_hover table-condensed function_bar_bordered">
-                                        <tbody>
-                                            <tr  class="">
-                                                <td style="width: 33.33%;">
-                                                    <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/hand_cursor-25.png" title="Hand Cursor" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                                    <p class="text-center" style="margin-top: 6px;">系外修課</p>
-                                                </td>
-                                                <td style="width: 33.33%;">
-                                                    <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Programming/add_property-25.png" title="Add Property" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                                    <p class="text-center" style="margin-top: 6px;">手動添課</p>
-                                                </td>
-                                                
-                                                <td style="width: 33.33%;" class="function_bar_hover" data-toggle="modal" data-target="#exampleModal">
-                                                    <img src="https://maxcdn.icons8.com/iOS7/PNG/25/User_Interface/save-25.png" title="Save" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                                    <p class="text-center" style="margin-top: 6px;">儲存課表</p>
-                                                </td>
-                                            </tr>
-                                            <tr  class="">
-                                                <td style="width: 33.33%;">
-                                                    <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Programming/pin-25.png" title="Pin" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                                    <p class="text-center" style="margin-top: 6px;">釘選到桌面</p>
-                                                </td>
-                                                
-                                                
-                                                <td style="width: 33.33%;">
-                                                    <img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/share-25.png" title="Share" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                                    <p class="text-center" style="margin-top: 6px;">分享課表</p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>    
-                                </div>
-
-                                <div class="col-md-12" >   
-                                    <div class="searchbar row">
-                                        <div class="ui search" style="padding:0px 15px;">
-                                      <div class="ui icon input" style="width:100%;">
-                                        <input class="prompt searchInput" type="text" placeholder="輸入課程名稱、老師、課程代碼  ">
-                                        <button class="ui button searchButton">Search</button>
-                                      </div>
-                                      <div class="results"></div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <table class="table table-striped table-hover table-condensed search_result" >
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="container-fluid arrange_timetable_bar">
-                                    <div class="col-xs-4" id="btn-tools">
-                                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#focus">
-                                        <span class="fa fa-heart fa-1x fa-fw"></span>選擇系級
-                                        </button>
-                                    </div>
-                                    <div class="col-xs-4" id="btn-tools">
-                                        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#search">
-                                        <span class="fa fa-search fa-1x fa-fw"></span>課程查詢
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    </div>
-                </div>
+                {% include 'course/cellphone.html' %}
 
             </div>
         </div>

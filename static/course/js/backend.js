@@ -71,7 +71,7 @@ var load_timetable = function(local){
     })
 }
 var load_json_for_user = function(degree,time_table_from_django){
-    var path = "/static/coursepickinghelper/json/" + degree + ".json";
+    var path = "/static/course/json/" + degree + ".json";
     /**************************************************************
     the if Clause means :
         if this part of json, eq:U.json has already been loaded in, dont load it again.

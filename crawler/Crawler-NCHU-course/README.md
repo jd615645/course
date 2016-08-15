@@ -1,6 +1,6 @@
 # NCHU-python-Parser (中興大學課程爬蟲)[![Build Status](https://travis-ci.org/Stufinite/Crawler-NCHU-course.svg?branch=master)](https://travis-ci.org/NCHUSG/Python-Crawler)
 
-* 興大的計資中心有按照我的需求產出一份**類似**json的東西  但時常會出現不合法的字元,使得整份json噴掉，且計中提供的格式是format過的，所以這個parser可以將它minify、過濾資料內空白、空行，倘若學校資料來源不幸無法運作，請採用替代方案：
+興大的計資中心有按照我的需求產出一份**類似**json的東西  但時常會出現不合法的字元,使得整份json噴掉，且計中提供的格式是format過的，所以這個parser可以將它minify、過濾資料內空白、空行，倘若學校資料來源不幸無法運作，請採用替代方案：
   * 使用自製的[Crawler](fallback)
 
 
@@ -24,17 +24,25 @@ pip3 install -r requirements.txt
 
 ## Deployment
 
-1. Change your directory to this project
+Add additional notes about how to deploy this on a live system
 
-  * `cd /path/to/project`
-
-2. Use Crontab to make crawler automatically run in background
+1. Use Crontab to make crawler automatically run in background
 
   * `crontab -e`
 
-3. Paste the command below into the bottom of the crontab file :
+2. Paste the command below into the bottom of the crontab file :
 
-  * 獲得全部課程 ( For all Course ) `* * * * * python3 CoursePickingHelperCrawler.py`
+  (1).  Change your directory to this project
+
+    * `cd /path/to/project`
+
+  (2). Use Crontab to make crawler automatically run in background
+
+    * `crontab -e`
+
+  (3). Paste the command below into the bottom of the crontab file :
+
+    *  `* * * * * python3 CoursePickingHelperCrawler.py #獲得全部課程 ( For all Course )`
 
 ### Result
 
@@ -101,7 +109,7 @@ pip3 install -r requirements.txt
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/NCHUSG/Python-Crawler/tags). 
+For the versions available, see the [tags on this repository](https://github.com/NCHUSG/Python-Crawler/tags).
 
 ## Contributors
 
@@ -109,10 +117,6 @@ For the versions available, see the [tags on this repository](https://github.com
 * **戴均民** - *Initial work* - [taichunmin](https://github.com/taichunmin)
 * **黃川哲** - *Initial work* - [CJHwong](https://github.com/CJHwong)
 * **張泰瑋** [david](https://github.com/david30907d)
-
-## License
-
-This project is licensed under the **GNU 3.0** License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
@@ -123,4 +127,10 @@ This project is licensed under the **GNU 3.0** License - see the [LICENSE.md](LI
     * [在職專班](https://onepiece.nchu.edu.tw/cofsys/plsql/json_for_course?p_career=W)
     * [碩班](https://onepiece.nchu.edu.tw/cofsys/plsql/json_for_course?p_career=G)
     * [博士班](https://onepiece.nchu.edu.tw/cofsys/plsql/json_for_course?p_career=D)
+    
+* 感謝[黃川哲](https://github.com/CJHwong)大大開的坑，讓學弟學了不少的Python，學長們的 code 也讓我受益良多~
 * 感謝[Pastleo](https://github.com/chgu82837)大大開的坑，讓學弟學了不少的Python，學長們的 code 也讓我受益良多~
+
+## License
+
+This project is licensed under the **GNU 3.0** License - see the [LICENSE.md](LICENSE.md) file for details

@@ -352,13 +352,13 @@ var check_general=function(course){
     var disciplineS={"公民與社會學群":"","法律與政治學群":"","商業與管理學群":"","心理與教育學群":"","資訊與傳播學群":""};
     var disciplineN={"生命科學學群":"","環境科學學群":"","物質科學學群":"","數學統計學群":"","工程科技學群":""};                
     if(course.discipline in disciplineH){
-        bulletin_post($("#humanities"), course, language)
+        bulletin_post($(".human"), course, language)
     }
     else if(course.discipline in disciplineS){
-        bulletin_post($("#social"), course, language)
+        bulletin_post($(".society"), course, language)
     }
     else if(course.discipline in disciplineN){
-        bulletin_post($("#natural"), course, language)
+        bulletin_post($(".nature"), course, language)
     }
     else{
         alert("有通識課程無法顯示，煩請記下點擊的結束為何並告知開發小組\nFB搜尋：選課小幫手\nhttps://www.facebook.com/CoursePickingHelper")
@@ -562,16 +562,16 @@ var return_bulletin_option = function(course){
     if(course.for_dept == window.user['returnarr']['d_major']){     
         //double_major的option顏色是紫色的               
         // var $option = $($.parseHTML('<div><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""></button><a class="btn" href="" target="_blank"><span class="fa fa-comment"></span></a></div>'));
-        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></h5></th><td ><span class="title" style="color:#B53074;></span></td><td ><span class="time"></span></td><td ><span class="location"></span></td><td ><span class="professor"></span></td></tr>'));
+        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></h5></th><td ><span class="title" style="color:#B53074;></span></td><td ><span class="time"></span></td><td ><span class="professor"></span></td></tr>'));
     }
     else{
         // var $option = $($.parseHTML('<div><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#3074B5;" title="" value=""></button><a class="btn" href="" target="_blank"><span class="fa fa-comment"></span></a></div>'));
-        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></button></h5></th><td ><span class="title"></span></td><td ><span class="time"></span></td><td ><span class="location"></span></td><td ><span class="professor"></span></td></tr>'));  //把option做成dom，再把dom做成jQuery物件
+        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></button></h5></th><td ><span class="title"></span></td><td ><span class="time"></span></td><td ><span class="professor"></span></td></tr>'));  //把option做成dom，再把dom做成jQuery物件
     }
     return $option;
 }
 
 var return_add_course_option = function(){
     /*fa fa-book this hyper link is for user to supply book information to our sys*/
-    return $($.parseHTML('<div><div style="height: 21px;"><button type="button" class="close delete" data-dismiss="alert" aria-label="Close" style="color:red;"><span aria-hidden="true"  style="color:red;">&times;</span><input type="hidden" name="code-of-course" value=""></button><a href="/course/supply_book_info/"><button type="button" class="close fa fa-book"style=":blue;font-size: 1rem;"></button></a></div><div class="title"></div><div class=""><div class="professor "></div><div class="location "></div>'));
+    return $($.parseHTML('<div><div style="height: 21px;"><button type="button" class="close delete" data-dismiss="alert" aria-label="Close" style="color:red;"><span aria-hidden="true"  style="color:red;">&times;</span><input type="hidden" name="code-of-course" value=""></button><a href="/course/supply_book_info/"></a></div><div class="title"></div><div class=""><div class="professor "></div><div class="location "></div>'));
 }

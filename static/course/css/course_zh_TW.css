@@ -53,11 +53,7 @@ body
      background-color: transparent;
      color: #666;
 }
-#time-table button.btn-link
-{
-    text-align: center;
-    color:black;
-}
+
 #time-table div.title
 {
     text-align: center;
@@ -127,10 +123,6 @@ body
   background-color: initial;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: initial;
-}
-
 
 /*nav*/
 .vertical_nav__opened {
@@ -189,7 +181,6 @@ th h5{
 }
 
 .arrange_timetable{
-  background-color: #FFF;
   border-radius: 4px;
   margin-top: 30px;
 }
@@ -281,16 +272,9 @@ th h5{
     padding: 7px 5px;
   }
 }
-/*mr2 schedule*/
-tr th{
-  color:#696969;
-}
 
 .btn-primary {
   color: #000;
-}
-.table>tbody>tr.info>td, .table>tbody>tr.info>th, .table>tbody>tr>td.info, .table>tbody>tr>th.info, .table>tfoot>tr.info>td, .table>tfoot>tr.info>th, .table>tfoot>tr>td.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>thead>tr.info>th, .table>thead>tr>td.info, .table>thead>tr>th.info {
-  background-color: #FFFFFF;
 }
 
 .table-hover>tbody>tr.active:hover>td, .table-hover>tbody>tr.active:hover>th, .table-hover>tbody>tr:hover>.active, .table-hover>tbody>tr>td.active:hover, .table-hover>tbody>tr>th.active:hover {

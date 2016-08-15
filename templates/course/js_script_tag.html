@@ -128,7 +128,7 @@ $(document).ready(function(){
             console.log(major+' = '+d_major+' = '+d_level);
             console.log(day+' '+hour);
             $.each(course_of_day[day][hour], function(ik, iv){
-                if(iv.for_dept==major||((iv.for_dept==d_major)&&(iv.class==d_level))||iv.for_dept=="全校共同"||iv.for_dept=="共同學科(進修學士班)"){//判斷如果是主系的課就不分年級全部都會顯示出來，如果是輔系的就只顯示該年級的課；如果for_dept==undefined就代表是通識課；如果為全校共同或共同學科(進修學士班)就會是體育、國防、服務學習、全校英外語 or general education, chinese and english.                           
+                if(iv.for_dept==major||((iv.for_dept==d_major)&&(iv.class==d_level))||iv.for_dept=="全校共同"||iv.for_dept=="共同學科(進修學士班)"){//判斷如果是主系的課就不分年級全部都會顯示出來，如果是輔系的就只顯示該年級的課；如果for_dept==undefined就代表是通識課；如果為全校共同或共同學科(進修學士班)就會是體育、國防、服務學習、全校英外語 or general education, chinese and english.             
                     if(iv.obligatory_tf==false && iv.for_dept != major && iv.for_dept != d_major){
                     //代表是教務處綜合課程查詢裡面的所有課、國防、師培、全校選修、全校英外語  (obligatory of 師培 can be true or false!!!)
                         check_which_common_subject(iv);
@@ -145,6 +145,7 @@ $(document).ready(function(){
                 }
 
             })
+            toggle_bulletin();
         }
     });
     $("#m_career").change(function(){//會動態變動系所與年級名稱
