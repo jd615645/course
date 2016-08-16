@@ -46,6 +46,7 @@ $(document).ready(function(){
         if(check=="available"){
             change_color($(this),"used");//選過的課程就會改顏色
         }
+        console.log('hhahahahahah');
     });
     /**********最主要的系級提交funciton，若要修改請謹慎小心!!!***********/
     $("#department_search").click(function(){
@@ -77,7 +78,7 @@ $(document).ready(function(){
         $("#credits").val("");                 
     });
     $('.searchButton').click(function(){
-        $(".search_result").empty();// remove the result of last search.
+        group_of_reset();
         var inputVal=$('.searchInput').val();
         try {
             code_search(inputVal);

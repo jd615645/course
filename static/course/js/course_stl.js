@@ -271,35 +271,35 @@ var check_which_class=function(major,level){    //確定他是不是有分A、B�
 /*********判斷課程放入哪個欄位*********/
 var check_which_bulletin=function(course){  //為了判斷A、B班以及不分班的科系開被放到哪個bulletin
     if(course.class=="1"||course.class=="1A"||course.class=="1B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="2"||course.class=="2A"||course.class=="2B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="3"||course.class=="3A"||course.class=="3B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="4"||course.class=="4A"||course.class=="4B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="5"||course.class=="5A"||course.class=="5B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="6"||course.class=="6A"||course.class=="6B"){
         //6、7年級是放碩博班的課
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="7"||course.class=="7A"||course.class=="7B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="8"||course.class=="8A"||course.class=="8B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="9"||course.class=="9A"||course.class=="9B"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }
     else if(course.class=="0"){
-        bulletin_post($(".search_result"),course, language);
+        bulletin_post($(".optional"),course, language);
     }       
     else{
         alert("check_which_bulletin ERROR,麻煩您到粉專通知開發人員喔");
@@ -384,14 +384,14 @@ var build_bulletin_time=function(course){
     var EN_CH={"語言中心":"","夜共同科":"","夜外文":"","通識中心":"","夜中文":""};
     var time = [];  //time設定為空陣列
     $.each(course.time_parsed, function(ik, iv){
-        time.push("星期"+week[iv.day-1]+iv.time); //push是把裡面的元素變成陣列的一格
+        time.push("("+week[iv.day-1]+")"+iv.time); //push是把裡面的元素變成陣列的一格
     })
     if(course.intern_time!=""&&course.intern_time!=undefined){//不是每一堂課都會有實習時間
         time.push("實習時間:"+course.intern_time);
     }
-    if(course.discipline!=""&&course.discipline!=undefined){//代表他是通識課
-        time.push("學群:"+course.discipline);
-    }
+    // if(course.discipline!=""&&course.discipline!=undefined){//代表他是通識課
+    //     time.push(" "+course.discipline);
+    // }
     else{
     }                
     time = time.join(' ');  //把多個陣列用" "分隔並合併指派給time，此為字串型態，若是將字串split('')，則會回傳一個陣列型態
@@ -473,7 +473,7 @@ var title_search=function(class_title, cre_funcion){
                     if(posted_code.indexOf(jv.code)==-1 && (jv.credits==condition||condition==true)){
                         //indexOf will find whether jv.code is in posted_code this array. 
                         // if it already exist, then i wont post this course into bulletin.
-                        bulletin_post($(".search_result"),jv, language);
+                        bulletin_post($(".optional"),jv, language);
                         posted_code.push(jv.code);
                     }                            
                 });

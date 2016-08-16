@@ -106,7 +106,7 @@ $(document).ready(function(){
 	*****************************************************************************/
 });
 var group_of_reset = function(){
-    $(".search_result").empty();//以下是要清掉選修課程、指定時間搜尋等課程
+    $(".optional").empty();//以下是要清掉選修課程、指定時間搜尋等課程
     $(".human").empty();
     $(".society").empty();
     $(".nature").empty();
@@ -116,7 +116,7 @@ var reset=function(){
     $('#time-table td').empty(); //把目前的time-table清空，好讓下個年級的課程能夠乾淨的顯示
     $("td").html('<span class="fa fa-plus-circle fa-5x"></span>');  //再把加號的按鈕填上去
     group_of_reset();
-    $(".search_result").empty();
+    $(".optional").empty();
     window.credits=0;
     $("#class_credit").text(window.credits);
     window.name_of_optional_obligatory=[];  //把數過的課程清空                

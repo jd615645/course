@@ -17,6 +17,7 @@ $(document).ready(function(){
     Search content from Semantic Ui 
     *****************************************************************/
     window.content = [];
+    $("#time-table td").html('<span class="fa fa-plus-circle fa-5x"></span>');
     //////////////////////////////////////////////////////////////////
 })
 var build_department_arr = function(depJson){//depJson 是傳入的department json檔名
