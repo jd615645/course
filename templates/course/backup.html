@@ -3,8 +3,8 @@
 <html lang="zh-tw" class="han-la">
 
     <head>
-        {% include 'header.html' %}
-        <link href="{% static 'coursepickinghelper/css/course_zh_TW.css' %}" rel="stylesheet">
+        {% include 'course/header.html' %}
+        <link href="{% static 'course/css/course_zh_TW.css' %}" rel="stylesheet">
     </head>
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -414,7 +414,7 @@
                                             <p class="text-center" style="margin-top: 6px;">一鍵選課</p>
                                         </td>
                                         <td style="width: 33.33%;">
-                                            <img src="{% static 'coursepickinghelper/images/icon/Download-50.png' %}" title="Add Property" width="35" style="margin: 0px auto 0px auto;display: block;">
+                                            <img src="{% static 'course/images/icon/Download-50.png' %}" title="Add Property" width="35" style="margin: 0px auto 0px auto;display: block;">
                                             <p class="text-center" style="margin-top: 6px;">下載課表json</p>
                                         </td>
                                         
@@ -450,7 +450,7 @@
                                             </div> 
                                             <div class=" booklisticon">
                                                 <a href="/zh-cn/search/?q={{ b.book }}">
-                                                <img src="{% static 'coursepickinghelper/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
+                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
                                                 </a>
                                             </div> 
                                         </label>
@@ -515,7 +515,7 @@
                                             </div> 
                                             <div class=" booklisticon">
                                                 <a href="">
-                                                <img src="{% static 'coursepickinghelper/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
+                                                <img src="{% static 'course/images/mr.2/書單icon_橘底.png' %}" width="50px" height="50px" alt="">
                                                 </a>
                                             </div> 
                                         </label>
@@ -626,10 +626,10 @@
 
             </div>
         </div>
-        {% include 'sponsor.html' %} {#我做的廣告插件，詳細程式碼再server上#}
-        {% include 'footer.html' %}
+        {% include 'course/sponsor.html' %} {#我做的廣告插件，詳細程式碼再server上#}
+        {% include 'course/footer.html' %}
         {#import footer#}
-        {% include 'js_sript_tag.html' %}
+        {% include 'course/js_script_tag.html' %}
         {#import tag of js#}
     </body>
 </html>

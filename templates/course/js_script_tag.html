@@ -46,7 +46,6 @@ $(document).ready(function(){
         if(check=="available"){
             change_color($(this),"used");//選過的課程就會改顏色
         }
-        console.log('hhahahahahah');
     });
     /**********最主要的系級提交funciton，若要修改請謹慎小心!!!***********/
     $("#department_search").click(function(){
@@ -163,7 +162,8 @@ $(document).ready(function(){
     });
 });
 /*******變換學制後，匯入該json檔*******/
-var get_json_when_change_degree = function(path,time_table_from_django)   {
+var get_json_when_change_degree = function(path,time_table_from_django){
+    console.log(time_table_from_django==null);
     $.when($.getJSON(path, function(json){  //getJSON會用function(X)傳回X的物件或陣列  
         //console.log(json);
         $.each(json.course, function(ik, iv){
@@ -320,12 +320,10 @@ var get_from_django = function(){
             //重導向頁面到get的網址，這樣django template才能把使用者的書單丟進
         }
         else{
-            console.log("{{ user_dept | escapejs }}");
             window.user['user_dept'] = "{{ user_dept | escapejs }}";
             window.time_table_from_django = JSON.parse("{{ time_table | escapejs }}");
-            console.log(111111111111111);
             // cause load_timetable func will call add_course, which will insert course into window.user['time_table']. The consequence is every course will be duplicated!! So time_table data got from django cannot be assign into window.user['time_table'] at the first time.
-            load_json_for_user('U',time_table_from_django);
+            load_json_for_user('U',window.time_table_from_django);
             /***********************************************************************
             把屬於使用者學制的json檔load進來，例如載入學士班的json
             the argument "time_table_from_django" is the data which is use "get" from db, contains user's timetable info.
