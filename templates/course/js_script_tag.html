@@ -49,22 +49,10 @@ $(document).ready(function(){
     });
     /**********最主要的系級提交funciton，若要修改請謹慎小心!!!***********/
     $("#department_search").click(function(){
-        /*this part is for specific search*/
-        if($("#checkbox").val() == "noDoubleMajor"){
-            reset();//因為每次reset都會把window.user給清空，所以要把資料存在window.user一定要再reset之後
-            
-            $("td").html('<span class="fa fa-plus-circle fa-5x"></span>');
-            get_major_and_level();
-            var major=window.user['returnarr']['major'];
-            var level=window.user['returnarr']['level'];
-            add_major(major, level);                        
-        }
-        else{
-            get_major_and_level();
-            var major2=window.user['returnarr']['d_major'];
-            var level2=window.user['returnarr']['d_level'];
-            add_doublemajor(major2, level2);
-        }
+        get_major_and_level();
+        var major2=window.user['returnarr']['d_major'];
+        var level2=window.user['returnarr']['d_level'];
+        add_doublemajor(major2, level2);
     });                
     $("#specific_search").click(function()  //可以用課號搜尋，把input的的課號用.val()取出
     {                                                

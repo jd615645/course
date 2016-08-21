@@ -30,7 +30,8 @@ var bulletin_post = function($target, course, language){
     $option.find('button').val(course.code);                
     //把現在找到的這門選修課課程代碼儲存到這個option，並用value表示       
     var url=window.url_base+course.url;     
-    $option.find('a').attr('href',url);
+    $option.find('a.feedback').attr('href',url);
+    $option.find('a.syllabus').attr('href',"http://feedback.nchusg.org/search/?q="+course.title_short);
     $target.append($option);        //顯示課程，把$option放到elective-post，append是追加在後面                
     $('[data-toggle="tooltip"]').tooltip(); //讓tooltip功能綁上去
 };
@@ -332,7 +333,9 @@ var check_which_bulletin_required=function(course){
 /*********搜尋用*********/
 var department_course_for_specific_search=function(major,level){
     $.each(course_of_majors[major][level], function(ik, iv){//因為這種輔系的課一定是交給使用者自己選，所以就不自動填入
+        console.log(iv)
         $.each(courses[iv],function(jk,jv){
+            console.log(jv)
             if(jv.for_dept==major){//這個判斷是為了像景觀學程那種專門上別的科系的課的系而設計的
                 if(jv.obligatory_tf==true&&jv.class==level){
                     bulletin_post($("#obligatory-post"),jv, language);
@@ -520,10 +523,10 @@ var get_major_and_level = function(){
     window.user['returnarr']['degree']=arr[0]['value'];
     var temp;
     temp=arr[1]['value'].split('-')[1];
-    window.user['returnarr']['level']=check_which_class(temp,arr[2]['value']);
-    window.user['returnarr']['major']=temp.split(' ')[0];
-    temp=arr[3]['value'].split('-')[1];
-    window.user['returnarr']['d_level']=check_which_class(temp,arr[4]['value']);
+    // window.user['returnarr']['level']=check_which_class(temp,arr[2]['value']);
+    // window.user['returnarr']['major']=temp.split(' ')[0];
+    temp=arr[1]['value'].split('-')[1];
+    window.user['returnarr']['d_level']=check_which_class(temp,arr[2]['value']);
     window.user['returnarr']['d_major']=temp.split(' ')[0];
 }    
 /******************************************************
@@ -559,15 +562,8 @@ var isChar = function(input){
     }
 }
 var return_bulletin_option = function(course){
-    if(course.for_dept == window.user['returnarr']['d_major']){     
-        //double_major的option顏色是紫色的               
-        // var $option = $($.parseHTML('<div><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""></button><a class="btn" href="" target="_blank"><span class="fa fa-comment"></span></a></div>'));
-        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></h5></th><td ><span class="title" style="color:#B53074;></span></td><td ><span class="time"></span></td><td ><span class="professor"></span></td></tr>'));
-    }
-    else{
-        // var $option = $($.parseHTML('<div><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#3074B5;" title="" value=""></button><a class="btn" href="" target="_blank"><span class="fa fa-comment"></span></a></div>'));
-        var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></button></h5></th><td ><span class="title"></span></td><td ><span class="time"></span></td><td ><span class="professor"></span></td></tr>'));  //把option做成dom，再把dom做成jQuery物件
-    }
+    // var $option = $($.parseHTML('<div><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#3074B5;" title="" value=""></button><a class="btn" href="" target="_blank"><span class="fa fa-comment"></span></a></div>'));
+    var $option = $($.parseHTML('<tr  class="text-center"><th><h5 class=""><button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="top" style="color:#B53074;" title="" value=""><img src="https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/plus-25.png" title="Plus" title="Exit" width="25"></button></h5></th><td><a class="syllabus" href="" target="_blank"><span class="title"></span></a></td><td ><span class="time"></span></td><td ><span class="professor"></span></td><td><a class="feedback" href="" target="_blank"><span class="fa fa-pencil-square-o"></span></a></td></tr>'));  //把option做成dom，再把dom做成jQuery物件
     return $option;
 }
 

@@ -12,24 +12,12 @@ $(document).ready(function(){
 	
 	/*******       ↓雙主修選擇↓       *******/
 	$("#checkbox").click(function(){
-	    if($(this).val() == "noDoubleMajor"){
-	        $(this).val("DoubleMajor");
-	        $('#degree_div').toggle("slow");
-	        $('#major_div').toggle("slow");
-	        $('#level_div').toggle("slow");                        
-	        $("#d_major_group").toggle("slow");
-	        $("#d_level_group").toggle("slow");
-	        $("#textForDM").toggle("slow");
-	    }
-	    else{
-	        $(this).val("noDoubleMajor");
-	        $('#degree_div').toggle("slow");
-	        $('#major_div').toggle("slow");
-	        $('#level_div').toggle("slow");    
-	        $("#d_major_group").toggle("slow");
-	        $("#d_level_group").toggle("slow");
-	        $("#textForDM").toggle("slow");
-	    }
+		$('#degree_div').toggle("slow");
+		$('#major_div').toggle("slow");
+		$('#level_div').toggle("slow");    
+		$("#d_major_group").toggle("slow");
+		$("#d_level_group").toggle("slow");
+		$("#textForDM").toggle("slow");
 	});
 	$('#storecheck').click(function(){
 		if($(this).val()=='post'){
@@ -49,33 +37,6 @@ $(document).ready(function(){
 		}
 	})
 	/*******       ↑雙主修選擇↑       *******/
-
-	$("#bulletin").delegate("span.fa-trash", "click", function(){//這是給垃圾桶用的
-	    if($(this).parents("button").attr("class")=="close elective"){
-	        $("#freshman").empty();
-	        $("#sophomore").empty();
-	        $("#junior").empty();
-	        $("#senior").empty();
-	        $("#fifth-grade").empty();
-	    }
-	    else if($(this).parents("button").attr("class")=="close general"){
-	        $('#humanities').empty();
-	        $('#social').empty();
-	        $('#natural').empty();
-	    }
-	    else if($(this).parents("button").attr("class")=="close school"){
-	        $('#chinese').empty();
-	        $('#english').empty();
-	        $('#PE-post').empty();
-	        $('#military-post').empty();
-	        $('#teacher-post').empty();
-	        $('#foreign-post').empty();
-	        $('#non-graded-optional-post').empty();
-	    }
-	    else{
-	        $(this).parents(".panel-heading").next().empty();
-	    }
-	});
 	/**********用來把夜校的欄位隱藏起來***********/
 	$("#toggleTable").click(function(){             
 	    if($("#toggleTable").val()=="moon")
@@ -97,13 +58,6 @@ $(document).ready(function(){
 	        $(this).find("span").toggle("slow");
 	    }
 	});
-	
-	$("#booklistbtn").click();
-	/*****************************************************************************
-	Becuase the "booklist field" was hiddened by default.
-	When the html page is loaded, automatically clicked it, no matter it already have book list or not.
-  If it didn't hava any booklist, the field will be empty and show nothing, which didn't occupy any space; if it already have booklist, just show it.
-	*****************************************************************************/
 });
 var group_of_reset = function(){
     $(".optional").empty();//以下是要清掉選修課程、指定時間搜尋等課程

@@ -78,9 +78,9 @@ var load_json_for_user = function(degree,time_table_from_django){
         And pass time_table_from_django (user's timetable info) argument to get_json methond
     **************************************************************/
     if(haveloadin[degree]==false){
+        get_json_when_change_degree(path,time_table_from_django);
         haveloadin[degree]=true;
     }
-    get_json_when_change_degree(path,time_table_from_django);
 }
 var descide_post = function(payload){
     //if user didn't add any data to payload, then there is no need to post his data into server.
