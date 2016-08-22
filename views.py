@@ -17,9 +17,10 @@ def course(request):
 def course_zh_TW(request):
     userDept_from_request = request.user.major
     userGrade_from_request = request.user.grade
+    userDegree_from_request = request.user.m_career
     email = request.user.email
-    CourseUser, created = Course_of_user.objects.update_or_create(user_name=request.user.email,defaults={
-            'hadSaved':True,
+    CourseUser, created = Course_of_user.objects.get_or_create(user_name=request.user.email,defaults={
+            'hadSaved':False,
             'user_dept':userDept_from_request,
             'user_grade':userGrade_from_request,
             'create':timezone.localtime(timezone.now())
