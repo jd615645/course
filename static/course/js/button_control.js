@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('.human_title').hide();
 	$('.society_title').hide();
 	$('.nature_title').hide();
+	$('.PE_title').hide();
 
 	/*******   ↑製作隱藏側欄的功能↑   *******/
 	
@@ -95,5 +96,9 @@ var toggle_bulletin=function(){
 	if($('.nature').text().trim()!=''){$('.nature_title').show("slow");}
 	else{
 		$('.nature_title').hide("slow");
+	}
+	if($('.PE').text().trim()!=''){$('.PE_title').show("slow");}
+	else{
+		$('.PE_title').hide("slow");
 	}
 }

@@ -321,7 +321,7 @@ var check_which_bulletin_required=function(course){
         bulletin_post($("#chinese"),course, language);
     }
     else if(course.department == "體育室" ||                 course.department=="夜共同科"){
-        bulletin_post($("#PE-post"),course, language);
+        bulletin_post($(".PE"),course, language);
     }
     else if(course.department == "師資培育中心"){
         bulletin_post($("#teacher-post"),course, language);
