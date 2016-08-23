@@ -461,8 +461,7 @@ var credits_filter=function(){
 /*******課程代碼搜尋*******/
 var code_search=function(code){
     if(code!=""){
-        bulletin_post($(".search_result"),courses[code][0], language);
-        $("#class_code").val("");
+        bulletin_post($(".optional"),courses[code][0], language);
     }
 }
 /********課程名稱搜尋********/
@@ -482,7 +481,6 @@ var title_search=function(class_title, cre_funcion){
                 });
             }
         })
-        $("#class_title").val("");
     }
 }
 /********授課教授搜尋*********/

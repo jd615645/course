@@ -9,9 +9,7 @@ $(document).ready(function(){
         saveAs(blob, filename+".json");
     })
     /*************post to server*************/
-    $('#post_for_course').click(function(){
-        window.user['user_name']=$('#user_name').val();
-        window.user['user_dept']=$('#user_dept').val();
+    $('.post_for_course').click(function(){
         //還沒有加上檢查使用者姓名和部門是不是有填了，目前覺得這些資訊是不用放到localstorage裡
         var postdata=$.extend({},window.user);
         postdata['csrfmiddlewaretoken']=getCookie('csrftoken');
@@ -37,6 +35,7 @@ $(document).ready(function(){
             toastr.warning('您還沒有填入任何課程喔！');
         }
     })
+    
     $('#book_of_course').click(function(){
         var postdata={}
         postdata['csrfmiddlewaretoken']=getCookie('csrftoken');

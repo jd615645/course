@@ -4,10 +4,10 @@ $(document).ready(function(){
 	    $("#whole-school-head").find("span").toggle();
 	    $("#whole-school").find("button").toggle("slow");
 	});
-	$('.human_title').hide();
-	$('.society_title').hide();
-	$('.nature_title').hide();
-	$('.PE_title').hide();
+	// $('.human_title').hide();
+	// $('.society_title').hide();
+	// $('.nature_title').hide();
+	// $('.PE_title').hide();
 
 	/*******   ↑製作隱藏側欄的功能↑   *******/
 	
@@ -65,6 +65,7 @@ var group_of_reset = function(){
     $(".human").empty();
     $(".society").empty();
     $(".nature").empty();
+    $(".PE").empty();
 }
 /***********清除***********/
 var reset=function(){

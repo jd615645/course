@@ -29,10 +29,15 @@
                                 {% include 'course/manual_instruction.html' %}
                                     <div><span class="glyphicon glyphicon-user"></span>學分 <span class="badge" id="class_credit"></span></div>
                                 </div> 
-                                <i class="fa fa-plus-square timetable_plus box-shadow dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"></i>
+                                <i class=" timetable_plus box-shadow dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="fa fa-hand-o-up"></span></i>
                                 <ul class="dropdown-menu timetable_bar_dropdown" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation" class="arrange_timetablepop" data-toggle="modal" data-target="#arrange_timetablepop"><a role="menuitem" tabindex="-1" href="#">加入課程</a></li>
                                 </ul>
+                                <div class=" pull-right saveicon">
+                                     <button type="button" class="btn btn-mr2 btn-block post_for_course" >
+                                     <span class="fa fa-floppy-o"></span>
+                                     </button>
+                                </div>
                             </div>
                         </div>
 
@@ -298,61 +303,6 @@
                                     </div>
                                 </div>
                             </div>
-                                <!--不知道要不要刪-->
-                                <!--儲存功能的下拉選單-->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="form-group controlbar">
-                                            <label for="doubleMajor" class="col-xs-2 control-label">切換功能</label>
-                                            <div class="col-xs-10">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="storecheck" value="post">
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="exampleModalLabel">儲存與輸出</h4>
-                                        </div>
-                                        <div class="form-group" id="postform">
-                                            <form action="" method="post">
-                                                {% csrf_token %}
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">您的姓名:</label>
-                                                    <input type="text" class="form-control" id="user_name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="message-text" class="control-label">部門名稱:</label>
-                                                    <textarea class="form-control" id="user_dept"></textarea>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-xs-4 form-group" id="alotbutton">
-                                            <button type="button" class="btn btn-danger btn-block" id="">
-                                                <span class="fa fa-cloud-upload fa-1x fa-fw"></span>線上儲存
-                                            </button>
-                                        </div>
-                                        <div class="modal-footer" id="footer_btn">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="saveAsJson">儲存課程資料</button>
-                                        </div>
-                                        <div class="form-group" style="display: none;" id="get_form">
-                                            <div class="form-group">
-                                                <form method="get" action="">
-                                                    <label for="name">查詢的姓名:</label>
-                                                    <input id="name" type="text" name="name" />
-                                                    <button type="submit" class="btn btn-danger btn-block" id="get_for_course">
-                                                        <span class="fa fa-cloud-download fa-1x fa-fw"></span>載入以前的課表
-                                                    </button>
-                                                </form>
-                                            </div>        
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -374,7 +324,7 @@
                                     </button>
                                 </div>
                                 <div class="col-xs-4" id="btn-tools">
-                                    <button type="button" style="color:#fff;" class="btn btn-primary btn-lg btn-block" id="post_for_course">
+                                    <button type="button" style="color:#fff;" class="btn btn-primary btn-lg btn-block post_for_course">
                                         <img src="{% static 'course/images/icon/backup.svg' %}" title="Save" width="35" style="margin: 0px auto 0px auto;display: block;">
                                             <p class="text-center" style="margin-top: 6px;">儲存課表</p>
                                     </button>
