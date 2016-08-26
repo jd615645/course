@@ -115,7 +115,7 @@ var add_major = function(major, level){
                 var title_short=return_optional_obligatory_course_name(jv);
                 if(window.name_of_optional_obligatory[title_short]==1){//只有必修課會被函式計算數量，所以就不用再判斷是否為必修了，一定是
                     if(jv.time_parsed==0){//表示應該為實習課，所以無時間,他沒有正課時間和實習時間，反正就是都沒有時間，神奇的是[]在boolean判斷式中居然會被當作0
-                        bulletin_post($(".search_result"), jv, language);   
+                        bulletin_post($(".optional"), jv, language);   
                     }
                     else{
                         add_course($('#time-table'), jv, language);
@@ -338,7 +338,7 @@ var department_course_for_specific_search=function(major,level){
             console.log(jv)
             if(jv.for_dept==major){//這個判斷是為了像景觀學程那種專門上別的科系的課的系而設計的
                 if(jv.obligatory_tf==true&&jv.class==level){
-                    bulletin_post($("#obligatory-post"),jv, language);
+                    bulletin_post($(".optional"),jv, language);
                     return false;
                 }
                 if(jv.obligatory_tf==false&&jv.class==level){//因為輔系的查詢只能查一個年級，所以就可以只判斷是否為level
@@ -489,7 +489,7 @@ var teach_search=function(teacher, cre_funcion){
     if(teacher!=""){//teacher is 老師名稱搜尋的字串
         $.each(teacher_course[teacher], function(ik, iv){
             if(iv.credits==condition||condition==true){
-                bulletin_post($(".search_result"),iv, language);
+                bulletin_post($(".optional"),iv, language);
             }
         });
         $("#class_teacher").val("");

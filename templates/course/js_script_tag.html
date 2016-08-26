@@ -17,9 +17,9 @@
 <script src="{% static 'course/js/csrf_post.js' %}"></script>
 <script src="{% static 'course/js/init.js' %}"></script>
 <script src="{% static 'course/js/course_stl.js' %}"></script>
-<script src="{% static 'course/js/backend.js' %}"></script>
 <script src="{% static 'course/js/button_control.js' %}"></script>
 <script src="{% static 'course/js/bootstrap_site.min.js' %}"></script>
+<script src="{% static 'course/js/backend.js' %}"></script>
 <script type="text/javascript">	
 $(document).ready(function(){     
     /**一開始的簡易版使用說明**/
@@ -54,19 +54,9 @@ $(document).ready(function(){
         var level2=window.user['returnarr']['d_level'];
         add_doublemajor(major2, level2);
     });                
-    $("#specific_search").click(function()  //可以用課號搜尋，把input的的課號用.val()取出
-    {                                                
-        var code = $("#class_code").val();
-        //課號搜尋                   
-        code_search(code);// use course code for index to search course.
-        title_search(credits_filter());//這兩行分別是課名搜尋和教師名稱搜尋
-        //把篩選學分的函式當作參數傳入
-        teach_search(credits_filter());
-        $("#credits").val("");                 
-    });
-    $('.searchButton').click(function(){
+    $('.ui.button.searchButton').click(function(){
         group_of_reset();
-        var inputVal = $('.searchInput').val();
+        var inputVal = $(this).siblings('input').val();
         try {
             code_search(inputVal);
         }catch(err) {}

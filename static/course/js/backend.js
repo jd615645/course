@@ -10,6 +10,7 @@ $(document).ready(function(){
     })
     /*************post to server*************/
     $('.post_for_course').click(function(){
+        $(window).unbind('beforeunload');
         //還沒有加上檢查使用者姓名和部門是不是有填了，目前覺得這些資訊是不用放到localstorage裡
         var postdata=$.extend({},window.user);
         postdata['csrfmiddlewaretoken']=getCookie('csrftoken');
@@ -17,25 +18,25 @@ $(document).ready(function(){
         postdata['idList']=JSON.stringify(window.user['idList']);
         postdata['returnarr']=JSON.stringify(window.user['returnarr']);
         //post Method一定要驗證csrf token, or post會被禁止forbidden
-        if(descide_post(postdata['time_table'])){
-            $.post( ".", postdata)
-            .done(function() {
-                toastr.success('恭喜您成功上傳課表囉~');
-                redirect_loc = "/course/course_zh_TW/?name="+postdata['user_name'];
-                document.location.href=redirect_loc;//重導向頁面到get的網址，這樣django template才能把使用者的書單丟進{% for %}
-            })
-            .fail(function() {
-                toastr.error('抱歉，上傳錯誤，請重新再試');
-            })
-            .always(function() {
-                console.log( "finished" );
-            });               
-        }
-        else{
-            toastr.warning('您還沒有填入任何課程喔！');
+        $.post( ".", postdata)
+        .done(function() {
+            toastr.success('恭喜您成功上傳課表囉~');
+            window.already_post = true;
+            redirect_loc = "/course/course_zh_TW/?name="+postdata['user_name'];
+            document.location.href=redirect_loc;//重導向頁面到get的網址，這樣django template才能把使用者的書單丟進{% for %}
+        })
+        .fail(function() {
+            toastr.error('抱歉，上傳錯誤，請重新再試');
+        })
+        .always(function() {
+            console.log( "finished" );
+        });               
+    })
+    $(window).bind('beforeunload', function (e) {
+        if(window.already_post==false){
+            return '請記得按上傳課表喔~';
         }
     })
-    
     $('#book_of_course').click(function(){
         var postdata={}
         postdata['csrfmiddlewaretoken']=getCookie('csrftoken');
@@ -57,9 +58,6 @@ $(document).ready(function(){
                 console.log( "finished" );
             });               
         }
-        else{
-            toastr.warning('您還沒有填入任何資料喔！');
-        }
     })
 })
 var load_timetable = function(local){
@@ -80,11 +78,6 @@ var load_json_for_user = function(degree,time_table_from_django){
         get_json_when_change_degree(path,time_table_from_django);
         haveloadin[degree]=true;
     }
-}
-var descide_post = function(payload){
-    //if user didn't add any data to payload, then there is no need to post his data into server.
-    if(payload == '[]' || payload == '') return false;
-    else return true;
 }
 var redirect_for_booklist = function(){
     redirect_loc = "/course/course_zh_TW/?name="+$('#user_name').val();

@@ -29,10 +29,13 @@
                                 {% include 'course/manual_instruction.html' %}
                                     <div><span class="glyphicon glyphicon-user"></span>學分 <span class="badge" id="class_credit"></span></div>
                                 </div> 
-                                <i class=" timetable_plus box-shadow dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="fa fa-hand-o-up"></span></i>
+                                <!-- <i class=" timetable_plus box-shadow dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="fa fa-hand-o-up"></span></i>
                                 <ul class="dropdown-menu timetable_bar_dropdown" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation" class="arrange_timetablepop" data-toggle="modal" data-target="#arrange_timetablepop"><a role="menuitem" tabindex="-1" href="#">加入課程</a></li>
-                                </ul>
+                                </ul> -->
+                                <button class=" pull-right saveicon">
+                                    <li role="presentation" class="arrange_timetablepop" data-toggle="modal" data-target="#arrange_timetablepop"><a role="menuitem" tabindex="-1" href="#">加入課程</a></li>
+                                </button>
                                 <div class=" pull-right saveicon">
                                      <button type="button" class="btn btn-mr2 btn-block post_for_course" >
                                      <span class="fa fa-floppy-o"></span>
@@ -314,7 +317,7 @@
                                 <div class="col-xs-4" id="btn-tools">
                                     <button type="button" style="color:#fff;" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#focus">
                                         <img src="{% static 'course/images/icon/appreciation.svg' %}" title="Hand Cursor" width="35" style="margin: 0px auto 0px auto;display: block;">
-                                            <p class="text-center" style="margin-top: 6px;">系外修課</p>
+                                            <p class="text-center" style="margin-top: 6px;">系所查詢</p>
                                     </button>
                                 </div>
                                 <div class="col-xs-4" id="btn-tools">
@@ -357,7 +360,6 @@
                                             <input class="prompt searchInput" type="text" placeholder="輸入課程名稱、老師、課程代碼  ">
                                             <button class="ui button searchButton ">Search</button>   
                                         </div>
-                                        <div class="search_results"></div>
                                     </div>
                                 </div>
                                 <div>
