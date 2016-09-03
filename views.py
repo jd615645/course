@@ -10,9 +10,6 @@ from django.utils import timezone # auto generate create time.
 import json
 from django.contrib.auth.decorators import login_required 
 # Create your views here.
-def course(request):
-    return render_to_response('course/course.html',locals())
-
 @login_required
 def course_zh_TW(request):
     userDept_from_request = request.user.major
@@ -35,7 +32,7 @@ def course_zh_TW(request):
         data=data.dict()# turn Querydict into python's dict
         idList=json.loads(data['idList'])
         save_idList_for_user(idList,data,CourseUser)
-        return render_to_response('course/course_zh_TW.html',locals())
+        return render_to_response('course/index.html',locals())
     elif 'name' in request.GET and request.GET['name']!='':
         # CourseUser = Course_of_user.objects.get(user_name=request.GET['name'])    
         user_name = CourseUser.user_name
@@ -43,10 +40,10 @@ def course_zh_TW(request):
         returnarr = CourseUser.returnarr
         time_table = CourseUser.time_table
         booklist = CourseUser.idList.all()
-        return render_to_response('course/course_zh_TW.html',locals())
+        return render_to_response('course/index.html',locals())
     else:    
         test=[12,23,45,6]
-        return render_to_response('course/course_zh_TW.html',RequestContext(request,locals()))
+        return render_to_response('course/index.html',RequestContext(request,locals()))
 
 def book_of_course(request):
     if request.POST:

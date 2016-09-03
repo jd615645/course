@@ -33,7 +33,6 @@ var bulletin_post = function($target, course, language){
     $option.find('a.feedback').attr('href',url);
     $option.find('a.syllabus').attr('href',"http://feedback.nchusg.org/search/?q="+course.title_short);
     $target.append($option);        //顯示課程，把$option放到elective-post，append是追加在後面                
-    $('[data-toggle="tooltip"]').tooltip(); //讓tooltip功能綁上去
 };
 var add_course = function($target, course, language){      //假設target為time-table的參數，course為courses的某一個課程
     if( !$.isArray(course.time_parsed) )
@@ -465,17 +464,17 @@ var code_search=function(code){
     }
 }
 /********課程名稱搜尋********/
-var title_search=function(class_title, cre_funcion){
-    condition=cre_funcion;//傳入會篩選學分條件的函式
+var title_search=function(class_title){
     var posted_code = [];
     if(class_title!=""){    //class_title is 課程名稱搜尋的字串
         $.each(name_of_course, function(ik, iv){
             if(ik.search(class_title)!=-1){
                 $.each(iv,function(jk, jv){
-                    if(posted_code.indexOf(jv.code)==-1 && (jv.credits==condition||condition==true)){
+                    if(posted_code.indexOf(jv.code)==-1){
                         //indexOf will find whether jv.code is in posted_code this array. 
                         // if it already exist, then i wont post this course into bulletin.
                         bulletin_post($(".optional"),jv, language);
+                        console.log(jv)
                         posted_code.push(jv.code);
                     }                            
                 });
@@ -484,15 +483,11 @@ var title_search=function(class_title, cre_funcion){
     }
 }
 /********授課教授搜尋*********/
-var teach_search=function(teacher, cre_funcion){
-    condition=cre_funcion;
+var teach_search=function(teacher){
     if(teacher!=""){//teacher is 老師名稱搜尋的字串
         $.each(teacher_course[teacher], function(ik, iv){
-            if(iv.credits==condition||condition==true){
-                bulletin_post($(".optional"),iv, language);
-            }
+            bulletin_post($(".optional"),iv, language);
         });
-        $("#class_teacher").val("");
     }
 }
 /*********教室資訊**********/
