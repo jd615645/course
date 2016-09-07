@@ -49,19 +49,16 @@ var return_degree_text = function(){
 }
 var generate_major_level_option = function(){
 //用先前產生出來的department_name名單，動態產出系所的選單按鈕
-    $("#major").empty();
     $("#d_major").empty();                
     var degree=return_degree_text();
-    //console.log(window.department_name[degree]);
+    console.log(window.department_name[degree]);    
     $.each(window.department_name[degree],function(ik,iv){
         var newOption=return_department_option_html(degree,ik);
-        $("#major").append(newOption);
         var newOption=return_department_option_html(degree,ik);
         $('#d_major').append(newOption);
         //append all the department option into major field!!
     })  
     if(degree=='G'||degree=='D'||degree=='W'||degree=='R'){
-        $('#level').empty();
         $('#d_level').empty();
         var option_array=return_two_grade_arr(degree, window.language);
         $('#level').append(option_array[0]).append(option_array[1]);  
@@ -69,7 +66,6 @@ var generate_major_level_option = function(){
         $('#d_level').append(option_array[0]).append(option_array[1]);                  
     }
     else{                        
-        $('#level').empty();
         $('#d_level').empty();
         var target_array=['#level', '#d_level'];
         var option_array=return_five_grade_arr(window.language);
