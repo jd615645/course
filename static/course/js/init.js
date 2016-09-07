@@ -1,17 +1,17 @@
 $(document).ready(function(){
-	window.credits=0//一開始的學分數是0
-	window.courses = {};//宣告一個空的物件
-	window.course_of_majors = {};//宣告一個空的物件
-	window.course_of_day = {};  //這是宣告日期的陣列
-	window.teacher_course = {}; //這是以老師姓名為index的陣列
-	window.name_of_course = {}; //這是以課程名稱為index的陣列
-	window.name_of_optional_obligatory = [] //這是用來存系上的必修課，檢查有沒有課名是重複的，若有就讓使用者自行決定要上哪堂
-	$("#class_credit").text(0);
-	window.language="zh_TW";//固定顯示語言為中文           
-	window.url_base="";//used to be the url that link to the syllabus of that course.
-	window.haveloadin={D:false,G:false,N:false,O:false,U:false,W:false};//used to checked whether that json of specific degree has been loaded in or not, if it did, the value turn to ture.
-	window.lastupdatetime="";//show the update time on server.
-	window.department_name={};
+    window.credits=0//一開始的學分數是0
+    window.courses = {};//宣告一個空的物件
+    window.course_of_majors = {};//宣告一個空的物件
+    window.course_of_day = {};  //這是宣告日期的陣列
+    window.teacher_course = {}; //這是以老師姓名為index的陣列
+    window.name_of_course = {}; //這是以課程名稱為index的陣列
+    window.name_of_optional_obligatory = [] //這是用來存系上的必修課，檢查有沒有課名是重複的，若有就讓使用者自行決定要上哪堂
+    $("#class_credit").text(0);
+    window.language="zh_TW";//固定顯示語言為中文           
+    window.url_base="";//used to be the url that link to the syllabus of that course.
+    window.haveloadin={D:false,G:false,N:false,O:false,U:false,W:false};//used to checked whether that json of specific degree has been loaded in or not, if it did, the value turn to ture.
+    window.lastupdatetime="";//show the update time on server.
+    window.department_name={};
     window.already_post = true;//check whether post of not.
     /*****************************************************************
     Search content from Semantic Ui 
@@ -49,16 +49,19 @@ var return_degree_text = function(){
 }
 var generate_major_level_option = function(){
 //用先前產生出來的department_name名單，動態產出系所的選單按鈕
+    $("#major").empty();
     $("#d_major").empty();                
     var degree=return_degree_text();
-    console.log(window.department_name[degree]);    
+    //console.log(window.department_name[degree]);
     $.each(window.department_name[degree],function(ik,iv){
         var newOption=return_department_option_html(degree,ik);
+        $("#major").append(newOption);
         var newOption=return_department_option_html(degree,ik);
         $('#d_major').append(newOption);
         //append all the department option into major field!!
     })  
     if(degree=='G'||degree=='D'||degree=='W'||degree=='R'){
+        $('#level').empty();
         $('#d_level').empty();
         var option_array=return_two_grade_arr(degree, window.language);
         $('#level').append(option_array[0]).append(option_array[1]);  
@@ -66,6 +69,7 @@ var generate_major_level_option = function(){
         $('#d_level').append(option_array[0]).append(option_array[1]);                  
     }
     else{                        
+        $('#level').empty();
         $('#d_level').empty();
         var target_array=['#level', '#d_level'];
         var option_array=return_five_grade_arr(window.language);
